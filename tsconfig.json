@@ -3,9 +3,13 @@
         "module": "commonjs",
         "target": "es5",
         "noImplicitAny": false,
-        "sourceMap": true
+        "sourceMap": false,
+        "outDir": "./dist/"
     },
     "exclude": [
+	"dist",
+	"typings/browser.d.ts",
+	"typings/browser",
         "node_modules"
     ]
 }

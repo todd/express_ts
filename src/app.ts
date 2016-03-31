@@ -1,4 +1,4 @@
-/// <reference path="typings/main.d.ts" />
+/// <reference path="../typings/main.d.ts" />
 
 import * as express from 'express';
 import * as logger from 'morgan';
@@ -6,19 +6,15 @@ import * as bodyParser from 'body-parser';
 
 import index from './routes/index';
 
-var app = express();
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use('/', index);
-
 declare global {
     interface Error {
         status?: number;
     }
 }
+
+const app = express();
+
+app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -26,8 +22,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-// error handlers
 
 // development error handler
 // will print stacktrace
@@ -51,5 +45,4 @@ app.use(function(err: any, req, res, next) {
   });
 });
 
-
-export default app;
+app.listen('3000', () => { console.log('Listening on port 3000...') });
