@@ -1,0 +1,8 @@
+build:
+  image: node:4.4-onbuild
+  commands:
+    - npm install
+    - node_modules/typings/dist/bin.js install
+    - $(npm bin)/tsc
+    - npm test
+
